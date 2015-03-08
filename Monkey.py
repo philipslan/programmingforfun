@@ -1,5 +1,5 @@
 import random
-# Self check 1 and 2 from Problem Solving with Algorithms and Data Structures
+# Self check 1 and 2 from Problem Solving with Algorithms and Data Structures Brad Miller, David Ranum
 # Infinite monkey theorem: a monkey hitting keys at random on a typewriter keyboard for an infinite amount of time will almost surely type a given text
 # such as the work of shakespeare.
 
@@ -44,15 +44,21 @@ def callmatch():
 	topstring=""
 	i=0
 	string= generatestring()
-	while i<1000:
+	while string != shakespeare:
 		score= selfcheck(string)
 		if score[0]> top:
 			top=score[0]
 			topstring= score[1]
-		if i%10==0:
-			print top
-			print topstring
 		string= score[1]
 		i+=1
-callmatch()
+	else:
+		return i-1
+
+array=[]
+for x in range(1000):
+	array.append(callmatch())
+num=0
+for x in range(1000):
+	num+= array[x]
+print float(num)/1000
 
