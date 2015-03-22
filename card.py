@@ -1,5 +1,5 @@
-# Implement Big 2
-import random
+# Implement a representation of a Deck
+from random import shuffle
 
 class Card:
 	def __init__(self,number,suit):
@@ -21,28 +21,17 @@ class Deck:
 			for value in values:
 				card= Card(value,suit)
 				self.deck.append(card)
+
 	def getDeck(self):
 		return self.deck
-	def getTopCard(self):
+
+	def drawCard(self):
 		return self.deck[0]
+
 	def shuffleDeck(self):
-		new=[0]*52
-		shuffled=0
-		while shuffled==0:
-			if (0 in new) == False:
-				shuffled=1
-			else:
-				for item in range(len(new)):
-					new[item]= 2
-		self.deck= new
+		shuffle(self.deck)
 		return self.deck
-
-
-
-a=Deck()
-print a.getTopCard().getSuit()
-print a.getTopCard().getNumber()
-print a.shuffleDeck()
+		
 
 		
 
