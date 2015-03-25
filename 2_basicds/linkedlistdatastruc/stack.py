@@ -1,16 +1,5 @@
 # Stack implemented using linked list
-class Node:
-	def __init__(self,data):
-		self.data= data
-		self.next= None
-	def getNext(self):
-		return self.next
-	def getData(self):
-		return self.data
-	def setNext(self,next):
-		self.next= next
-	def setData(self,data):
-		self.data= data
+from node import *
 
 class Stack:
 	def __init__(self):
