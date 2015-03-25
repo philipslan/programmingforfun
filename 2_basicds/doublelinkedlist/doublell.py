@@ -62,11 +62,44 @@ class List:
 				pos += 1
 		return pos
 	def insert(self,pos,item):
+		new= Node(item)
 		current= self.head
 		count= 0
-		found = False
+		found= False
 		while current != None and (not found):
-			if current 
+			if count == pos:
+				found= True
+			else:
+				count += 1
+				current= current.getNext()
+		if found:
+			current.getPrevious().setNext(new)
+			new.setPrevious(current.getPrevious())
+			current.setPrevious(new)
+			new.setNext(current)
+	def pop(self):
+		a= self.tail
+		a.getPrevious().setNext(None)
+		self.tail= a.getPrevious()
+		return a.getData()
+	def popp(self,pos):
+		current= self.head
+		count= 0
+		found= False
+		while current != None and (not found):
+			if count == pos:
+				found= True
+			else:
+				count += 1
+				current= current.getNext()
+		if found:
+			if current.getPrevious() != None:
+				current.getPrevious().setNext(current.getNext())
+			if current.getNext() != None:
+				current.getNext().setPrevious(current.getPrevious())
+			return current.getData()
+		else:
+			return None
 
 
 a= List()
@@ -74,8 +107,11 @@ a.add(5)
 a.add(3)
 a.append(4)
 a.append(6)
+a.insert(2,10)
 a.remove(4)
 print a.search(5)
 print a.size()
-print a.index(6)
+print a.index(10)
+print a.pop()
+print a.popp(2)
 
